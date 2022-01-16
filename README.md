@@ -89,6 +89,9 @@
 
 4. redirects, rewrites
 
-- redirects는 주소창에 특정 url이 전달되었을때, 특정 url로 이동시킨다. (next.config참고)
-- next.config변경시 서버를 재시작 해야 적용이 된다.
-- rewrites도 동일하게 특정 url을 특정 url로 이동시키지만 주소창에 있는 글자가 바뀌지 않는 특징이 있다. 이를 활용해 개발자도구, 소스코드에서 api key를 감출 수 있다.
+   - redirects는 주소창에 특정 url이 전달되었을때, 특정 url로 이동시킨다. (next.config참고)
+   - next.config변경시 서버를 재시작 해야 적용이 된다.
+   - rewrites도 동일하게 특정 url을 특정 url로 이동시키지만 주소창에 있는 글자가 바뀌지 않는 특징이 있다. 이를 활용해 개발자도구, 소스코드에서 api key를 감출 수 있다.
+
+5. `getServerSideProps()`를 통해 어디까지 서버에서 렌더링 해줄 지 정할 수 있다.  
+   앱의 초기 상태를 미리 백엔드에서 렌더링 하면, 리액트에서 받아오는 데이터들은 미리 렌더링 되지 않는다. SEO를 고려해 이를 먼저 렌더링 해줄 수 있다. (index.js의 getServerSideProps 참고)
