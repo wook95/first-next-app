@@ -87,6 +87,8 @@
 
 3. next.js에서는 Image 컴포넌트를 사용한다. (img말고)
 
-4. 개발자도구, 소스코드에서 api key 감추기
+4. redirects, rewrites
 
--
+- redirects는 주소창에 특정 url이 전달되었을때, 특정 url로 이동시킨다. (next.config참고)
+- next.config변경시 서버를 재시작 해야 적용이 된다.
+- rewrites도 동일하게 특정 url을 특정 url로 이동시키지만 주소창에 있는 글자가 바뀌지 않는 특징이 있다. 이를 활용해 개발자도구, 소스코드에서 api key를 감출 수 있다.
