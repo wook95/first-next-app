@@ -84,3 +84,9 @@
    너무 큰 \_app.js 컴포넌트 대신 children을 이용해 분리시켜준다.
 
 2. `<Head?> <title>타이틀</title> </Head>` 을 통해 메타데이터를 설정해 줄 수 있다.
+
+3. next.js에서는 Image 컴포넌트를 사용한다. (img말고)
+
+4. 개발자도구, 소스코드에서 api key 감추기
+
+-
