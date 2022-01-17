@@ -94,4 +94,34 @@
    - rewrites도 동일하게 특정 url을 특정 url로 이동시키지만 주소창에 있는 글자가 바뀌지 않는 특징이 있다. 이를 활용해 개발자도구, 소스코드에서 api key를 감출 수 있다.
 
 5. `getServerSideProps()`를 통해 어디까지 서버에서 렌더링 해줄 지 정할 수 있다.  
-   앱의 초기 상태를 미리 백엔드에서 렌더링 하면, 리액트에서 받아오는 데이터들은 미리 렌더링 되지 않는다. SEO를 고려해 이를 먼저 렌더링 해줄 수 있다. (index.js의 getServerSideProps 참고)
+   앱의 초기 상태를 미리 백엔드에서 렌더링 하면, 리액트에서 받아오는 데이터들은 미리 렌더링 되지 않는다.  
+   SEO를 고려해 이를 먼저 렌더링 해줄 수 있다. (index.js의 getServerSideProps 참고)
+
+6. 동적 라우팅  
+   **/로 나눠진 url을 만들고 싶다면**, pages안에 폴더를 만들어주면 된다.  
+   /movies/all을 원하면 `pages/movies/all.js`를 만들고  
+   /movies는 `pages/movies/index.js`와 같이 만들어주면 된다.
+
+   **/movies/:id**와 같이 여러개의 url을 받고 싶을때,
+   `pages/movies/[id].js`와 같이 만들어주면 url에 변수르 넣어줄 수 있다.
+
+7. url에서 url로 state 넘겨주기 (숨기기도 가능)
+   `router.push()`에서 url을 스트링으로 전달할 수도 있지만, 객체로 보내줄 수도 있다. push는 3가지 인수를 받는데, url,as,option으로 as와 option은 선택적이다. 여기서 as로 마스킹이 가능하다.
+
+   ```javascript
+   //스트링으로 보내기
+   router.push(`/movies/${id}`);
+
+   //객체로 보내기
+   router.push(
+     {
+       pathname: `movies/${id}`,
+       query: {
+         title,
+       },
+     },
+     `/movies/${id}` //as에 해당하는 내용
+   );
+   ```
+
+   query로 넘긴 title은 클릭으로 페이지에 접근했을때만 title이 넘겨져서 url을 그대로 새로고침하면 title이 없는 문제가 발생한다.

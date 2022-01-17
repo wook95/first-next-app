@@ -1,13 +1,34 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Seo from '../components/Seo';
 
 export default function Home({ results }) {
+  const router = useRouter();
+
+  const goToDetail = (id, title) => {
+    router.push(
+      {
+        pathname: `movies/${id}`,
+        query: {
+          title,
+        },
+      },
+      `/movies/${id}`
+    );
+  };
   return (
     <div className='container'>
       <Seo title='Home'></Seo>
       {results?.map(movie => {
         return (
-          <div className='movie' key={movie.id}>
+          <div
+            onClick={() => {
+              goToDetail(movie.id, movie.original_title);
+            }}
+            className='movie'
+            key={movie.id}
+          >
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             <h4>{movie.original_title}</h4>
           </div>
@@ -19,6 +40,7 @@ export default function Home({ results }) {
           grid-template-columns: 1fr 1fr;
           padding: 20px;
           gap: 20px;
+          cursor: pointer;
         }
         .movie img {
           max-width: 100%;
